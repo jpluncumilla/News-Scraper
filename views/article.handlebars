@@ -1,0 +1,53 @@
+<div class="jumbotron jumbotron-fluid text-center">
+  <h1 class="display-4">NPR News</h1>
+  <p class="lead">Read the latest tech news from NPR</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card bg-light mb-3">
+            <div class="card-body">
+                <h3 class="card-title">{{article.title}}</h5>
+                <h5 class="lead articleBody">{{body}}</h5>
+            </div>
+        </div>
+     </div>
+
+     <div class="row">
+        <div class="col-md-2"></div>
+        <form action="/comment/{{article._id}}" method="POST" class="card col-md-8">
+            <h5>Comment on this article</h5>
+            <div class="row">
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <input id="icon_prefix" type="text" placeholder="Name" name="name" class="validate active">
+                </div>
+                <div class="input-field">
+                    <i class="far fa-comment-alt">Comment</i>
+                    <input id="icon_telephone" type="text" placeholder="Comment" name="comment" class="validate active">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <center><input class="btn add-comment-btn navbar-light" type="submit" value="submit"></center>
+                </div>
+            </div>
+        </form>
+     </div>
+
+     <div class="row">
+         <div class="col-md-2"></div>
+         <div class="col-md-8">
+             <h5>Comments:</h5>
+             {{#if article.comment}}
+                {{#each article.comment}}
+                    <div class="card">
+                        <p id="nameComment">{{name}}</p>
+                        <p>{{body}}</p>
+                    </div>
+                {{/each}}
+             {{else}}
+             <p>No Comments Yet.</p>
+             {{/if}}
+         </div>
+     </div>
+</div>
